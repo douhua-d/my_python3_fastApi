@@ -8,8 +8,18 @@ from models import *
 from schemas import *
 from crud import *
 from database import *
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# 允许所有来源跨域（开发环境用，生产环境建议写具体域名）
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 或 ["http://localhost:5173"] 只允许你的前端
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 models.Base.metadata.create_all(bind=database.engine)
 
