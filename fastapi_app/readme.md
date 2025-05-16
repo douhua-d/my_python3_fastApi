@@ -15,7 +15,7 @@ http://127.0.0.1:8000/docs -->
 <!--   brew install mysql
   brew services start mysql -->
 
-  <!-- mysql -u root -p
+  <!-- mysql -u root
 # 输入密码后进入 MySQL 命令行
 
 CREATE DATABASE testdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
