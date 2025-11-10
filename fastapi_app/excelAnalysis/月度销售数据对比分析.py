@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 def analyze_monthly_sales():
-    """分析4-9月的可力洛销售数据，统一转换为盒数进行对比"""
+    """分析4-10月的可力洛销售数据，统一转换为盒数进行对比"""
     
     current_dir = os.path.dirname(os.path.abspath(__file__))
     pills_per_box = 7  # 每盒7片
@@ -14,12 +14,13 @@ def analyze_monthly_sales():
         '6月': '可力洛6月.xlsx', 
         '7月': '可力洛7月.xlsx',
         '8月': '可力洛8月.xlsx',
-        '9月': '可力洛9月.xlsx'
+        '9月': '可力洛9月.xlsx',
+        '10月': '可力洛10月.xlsx'
     }
     
     monthly_stats = []
     
-    print("=== 可力洛4-9月销售数据对比分析 ===\n")
+    print("=== 可力洛4-10月销售数据对比分析 ===\n")
     
     for month, filename in files.items():
         file_path = os.path.join(current_dir, filename)
@@ -90,7 +91,7 @@ def analyze_monthly_sales():
     summary_df = pd.DataFrame(monthly_stats)
     
     # 按月份排序
-    month_order = ['4月', '5月', '6月', '7月', '8月', '9月']
+    month_order = ['4月', '5月', '6月', '7月', '8月', '9月', '10月']
     summary_df['月份'] = pd.Categorical(summary_df['月份'], categories=month_order, ordered=True)
     summary_df = summary_df.sort_values('月份')
     
@@ -116,7 +117,7 @@ def analyze_monthly_sales():
     
     # 导出到Excel
     try:
-        output_path = os.path.join(current_dir, '4-9月销售数据对比分析报告.xlsx')
+        output_path = os.path.join(current_dir, '4-10月销售数据对比分析报告.xlsx')
         
         with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
             # 汇总统计表
